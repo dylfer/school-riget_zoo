@@ -6,6 +6,7 @@ CREATE TABLE `users`(
     `educational` BOOLEAN NOT NULL DEFAULT FALSE,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `token_secret`      VARCHAR(255) NOT NULL,
+    `2fa_secret` VARCHAR(255),
     `first_name` VARCHAR(30) NOT NULL,
     `last_name`  VARCHAR(30) NOT NULL,
     `phone`      VARCHAR(15),
