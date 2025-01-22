@@ -1,6 +1,12 @@
+from flask import Blueprint, request, jsonify
+import jwt
+import datetime
+import os
+
+auth_router = Blueprint('auth', __name__, url_prefix='/api/auth')
 
 
-@____.route("/login", methods=["POST"])
+@auth_router.route("/login", methods=["POST"])
 def login():
     data = request.json
     username = data.get("username")
@@ -21,7 +27,7 @@ def login():
     return jsonify({"error": "Invalid password"}), 401
 
 
-@____.route("/register", methods=["POST"])
+@auth_router.route("/register", methods=["POST"])
 def register():
     data = request.json
     username = data.get("username")
