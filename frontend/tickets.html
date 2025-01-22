@@ -41,32 +41,18 @@
             <label class="text-gray-700 w-96">Number of Adult Tickets</label>
             <div class="ml-4 flex items-center gap-4">
               <button type="button" onclick="decrementValue('adults')" class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold">-</button>
-              <input type="number" id="adults" min="1" value="1" class="w-20 p-2 border rounded-lg text-center" required>
+              <input type="number" id="adults" min="1" value="1" max="40" class="w-20 p-2 border rounded-lg text-center" required>
               <button type="button" onclick="incrementValue('adults')" class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold">+</button>
             </div>
           </div>
 
-          <script>
-            function incrementValue(id) {
-              const input = document.getElementById(id);
-              const currentValue = parseInt(input.value);
-              input.value = currentValue + 1;
-            }
-          
-            function decrementValue(id) {
-              const input = document.getElementById(id);
-              const currentValue = parseInt(input.value);
-              if (currentValue > parseInt(input.min)) {
-                input.value = currentValue - 1;
-              }
-            }
-          </script>
+
           
           <div class="flex items-center gap-2">
             <label class="text-gray-700 w-96">Number of Children Tickets</label>
             <div class="ml-4 flex items-center gap-4">
               <button type="button" onclick="decrementValue('children')" class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold">-</button>
-              <input type="number" id="children" min="0" value="0" class="w-20 p-2 border rounded-lg text-center" required>
+              <input type="number" id="children" min="0" value="0" max="300" class="w-20 p-2 border rounded-lg text-center" required>
               <button type="button" onclick="incrementValue('children')" class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold">+</button>
             </div>
           </div>
@@ -78,5 +64,6 @@
         </button>
       </form>
     </section>
+    <script src="tickets.js" ></script>
   </body>
 </html>
