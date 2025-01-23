@@ -2,79 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <title>Dashboard</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-<body>
-  <div class="flex h-screen">
-    <!-- Main Content -->
-    <div class="flex-1 p-6">
-      <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
-      <div class="grid grid-cols-2 gap-4">
-        <!-- Welcome -->
-        <div class="bg-gray-200 rounded-md p-4 relative">
-          <h2 class="text-lg font-bold mb-2">Welcome, User</h2>
-          <!-- Booking details -->
-          <div class="bg-white rounded-md shadow-md p-4 max-h-96 overflow-y-auto">
-            <h3 class="text-lg font-bold mb-2">Bookings</h3>
-            <div class="grid grid-cols-4 gap-2">
-              <div>
-                <p class="font-bold pb-2">Type</p>
-                <p>Zoo</p>
-                <p>Hotel</p>
-                <p>Zoo</p>
-                <p>Hotel</p>
-              </div>
-              <div>
-                <p class="font-bold pb-2">Date</p>
-                <p>27.03.25 - 28.03.25</p>
-                <p>27.03.25 - 31.03.25</p>
-                <p>27.03.25 - 28.03.25</p>
-                <p>27.03.25 - 31.03.25</p>
-              </div>
-              <div>
-                <p class="font-bold pb-2">Quantity</p>
-                <p>4</p>
-                <p>1</p>
-                <p>2</p>
-                <p>1</p>
-              </div>
-              <div>
-                <p class="font-bold pb-2">Ticket Type</p>
-                <p>Single</p>
-                <p>Family Room</p>
-                <p>Single</p>
-                <p>Family Room</p>
-              </div>
-            </div>
-          </div>
-          <div class="absolute bottom-4 left-4">
-            <i class="fas fa-cog w-6"></i>
-            <button class="bg-gray-600 hover:bg-gray-700 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500">
-              User Settings
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Dashboard</h1>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Welcome Card -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 bg-blue-50">
+          <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-gray-800">Welcome, User</h2>
+            <button class="text-gray-600 hover:text-gray-800 transition">
+              <i class="fas fa-cog text-xl"></i>
             </button>
           </div>
         </div>
-
-        <!-- Total Donated -->
-        <div class="bg-gray-200 rounded-md p-4">
-          <h2 class="text-lg font-bold mb-2">Total Donated</h2>
-          <div class="bg-white rounded-md shadow-md p-4">
-            <p class="text-4xl font-bold pb-2">£12.60</p>
-            <p>Every £1 helps save 1 animal</p>
-            <p>Donations are not required but are appreciated</p>
-            <div class="mt-4">
-              <p class="font-bold">Points to Spend</p>
-              <p class="text-2xl">360 Points</p>
+        <div class="p-6">
+          <div class="bg-gray-100 rounded-lg p-4 max-h-80 overflow-y-auto">
+            <h3 class="text-lg font-semibold text-gray-700 mb-4">Your Bookings</h3>
+            <div class="divide-y divide-gray-200">
+              <div class="grid grid-cols-4 gap-2 py-2 text-sm">
+                <div>
+                  <p class="font-bold text-gray-600">Type</p>
+                  <p>Zoo</p>
+                  <p>Hotel</p>
+                  <p>Zoo</p>
+                  <p>Hotel</p>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-600">Date</p>
+                  <p>27.03.25 - 28.03.25</p>
+                  <p>27.03.25 - 31.03.25</p>
+                  <p>27.03.25 - 28.03.25</p>
+                  <p>27.03.25 - 31.03.25</p>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-600">Quantity</p>
+                  <p>4</p>
+                  <p>1</p>
+                  <p>2</p>
+                  <p>1</p>
+                </div>
+                <div>
+                  <p class="font-bold text-gray-600">Ticket Type</p>
+                  <p>Single</p>
+                  <p>Family Room</p>
+                  <p>Single</p>
+                  <p>Family Room</p>
+                </div>
+              </div>
             </div>
-            <div class="mt-4">
-              <p class="font-bold">Total Points Gained</p>
-              <p class="text-2xl">1450 Points</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donations Card -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 bg-green-50">
+          <h2 class="text-2xl font-bold text-gray-800">Donation Impact</h2>
+        </div>
+        <div class="p-6 space-y-6">
+          <div>
+            <p class="text-4xl font-bold text-green-600 mb-2">£12.60</p>
+            <p class="text-gray-600">Every £1 helps save 1 animal</p>
+            <p class="text-sm text-gray-500">Donations are appreciated but not required</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="font-semibold text-gray-700">Points to Spend</p>
+              <p class="text-2xl font-bold text-blue-600">360</p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700">Total Points</p>
+              <p class="text-2xl font-bold text-green-600">1450</p>
             </div>
           </div>
         </div>
