@@ -1,5 +1,9 @@
 from flask import Flask, request, jsonify
 from routes import register_routes
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 app = Flask(__name__, static_url_path='',
             static_folder='../frontend', template_folder='../frontend')
