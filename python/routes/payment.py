@@ -32,7 +32,7 @@ def create_checkout_session():
             line_items=items,
             mode='payment',
             return_url=YOUR_DOMAIN +
-            '/return.html?session_id={CHECKOUT_SESSION_ID}',
+            '/return?session_id={CHECKOUT_SESSION_ID}',
         )
     except Exception as e:
         return str(e)
