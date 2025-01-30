@@ -48,3 +48,8 @@ def privacy():
 @genral_router.route('/checkout')
 def checkout():
     return render_template('base.html', content_template='checkout.html', title='Checkout')
+
+
+@genral_router.route("/return")
+def payment_return():
+    return render_template('base.html', content_template='return.html', title='Return')
