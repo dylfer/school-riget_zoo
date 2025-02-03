@@ -29,15 +29,20 @@ class DataBace:
                 print("Failed to import psycopg2")
                 raise ImportError(
                     "psycopg2 module is not installed. Please install it to use PostgreSQL.") from e
-            self.mydb = psycopg2.connect(
-                host=host,
-                user=os.getenv("DB_USER") if user is None else user,
-                password=os.getenv(
-                    "DB_PASSWORD") if password is None else password,
-                database=database,
-                port=port
-            )
-            self.cursor = self.mydb.cursor()
+            try:
+                self.mydb = psycopg2.connect(
+                    host=host,
+                    user=os.getenv("DB_USER") if user is None else user,
+                    password=os.getenv(
+                        "DB_PASSWORD") if password is None else password,
+                    database=database,
+                    port=port
+                )
+                self.cursor = self.mydb.cursor()
+            except psycopg2.errors.OperationalError as e:
+                print("Failed to connect to database")
+                raise psycopg2.errors.OperationalError(
+                    "Failed to connect to database. Check if the database exists and the credentials are correct.") from e
         else:
             try:
                 import mysql.connector
@@ -45,15 +50,20 @@ class DataBace:
                 print("Failed to import mysql.connector")
                 raise ImportError(
                     "mysql.connector module is not installed. Please install it to use MySQL.") from e
-            self.mydb = mysql.connector.connect(
-                host=host,
-                user=os.getenv("DB_USER") if user is None else user,
-                password=os.getenv(
-                    "DB_PASSWORD") if password is None else password,
-                database=database,
-                port=port if port != "5432" else "3306"
-            )
-            self.cursor = self.mydb.cursor()
+            try:
+                self.mydb = mysql.connector.connect(
+                    host=host,
+                    user=os.getenv("DB_USER") if user is None else user,
+                    password=os.getenv(
+                        "DB_PASSWORD") if password is None else password,
+                    database=database,
+                    port=port if port != "5432" else "3306"
+                )
+                self.cursor = self.mydb.cursor()
+            except mysql.connector.errors.InterfaceError as e:
+                print("Failed to connect to database")
+                # raise mysql.connector.errors.ProgrammingError(
+                #     "Failed to connect to database. Check if the database exists and the credentials are correct.") from e
 
     def setup(self, file: str):
         if not os.path.exists(file):

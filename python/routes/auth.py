@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 import jwt
 import datetime
 import os
+import re
 
 
 def Define(DB):
@@ -17,7 +18,7 @@ def Define(DB):
         password = data.get("password")
         if not username:
             email = data.get("email")
-            res = DB.select()
+            res = DB.select("users","password, username",f"email = {email}")
             if not res:
                 return jsonify({"error": "User not found"}), 404
         else:
@@ -38,7 +39,12 @@ def Define(DB):
         email = data.get("email")
         if not username or not password or not email:
             return jsonify({"error": "Invalid data"}), 400
-        res = DB.query()
+        if len(username) < 3 or len(password) < 6 or not any(c.isupper() for c in password):
+            return jsonify({"error": "Username must be at least 3 characters and password at least 6 characters long"}), 400
+        email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+        if not re.match(email_regex, email):
+            return jsonify({"error": "Invalid email address"}), 400
+        res = DB.select("users","username",f"username = {username} OR email = {email}")
         if res:
             return jsonify({"error": "User already exists"}), 409
         DB.insert({"username": username, "password": Phash(
