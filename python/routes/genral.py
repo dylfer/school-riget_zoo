@@ -25,6 +25,10 @@ def forgotpassword():
     return render_template('base.html', content_template='forgotpassword.html', title='Forgot password')
 
 
+@genral_router.route("/settings")
+def settings():
+    return render_template('base.html', content_template='settings.html', title='Settings')
+
 @genral_router.route('/about')
 def about():
     return render_template('base.html', content_template='about.html', title='About')
