@@ -11,7 +11,7 @@ Python TODO will be complete by Dylan Ferrow
  - [x] add & apply points to tickets and book
  - [x] update/fix dashboard
  - [x] create educational visits 
- - [ ] complete home page
+ - [x] complete home page
  - [ ] add all missing images 
  - [ ] add user flow/ function to settings (2fa verification boxes that can appear or new screen for it.)
  - [ ] login + signup functionality 
