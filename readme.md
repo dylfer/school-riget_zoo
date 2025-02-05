@@ -9,8 +9,7 @@ Python TODO will be complete by Dylan Ferrow
 
 # TODO
  - [x] add & apply points to tickets and book
- - [ ] add donation to tickets and book
- - [ ] update/fix dashboard
+ - [x] update/fix dashboard
  - [ ] create educational visits 
  - [ ] complete home page
  - [ ] add all missing images 
