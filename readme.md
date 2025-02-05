@@ -7,23 +7,23 @@ Split up to create the preferred backend
 
 
 # TODO
- - [ ] add apply points to tickets and book
+ - [ ] add & apply points to tickets and book
  - [ ] add donation to tickets and book
  - [ ] update/fix dashboard
  - [ ] create educational visits 
  - [ ] complete home page
  - [ ] add all missing images 
- - [ ] add user flow/ function to settings (2fa verifcation boxes that can apear or new screen for it.)
+ - [ ] add user flow/ function to settings (2fa verification boxes that can appear or new screen for it.)
  - [ ] login + signup functionality 
  - [ ] booking + tickets + payment basket functionality
- - [ ] settings + dashbaord functionality
+ - [ ] settings + dashboard functionality
  - [ ] contact page function
 
 
 # php TODO
  - [ ] move files
- - [ ] conver all to php
- - [ ] chagne files to include nav and footer 
+ - [ ] convert all to php
+ - [ ] change files to include nav and footer 
 
 
 
