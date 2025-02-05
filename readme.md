@@ -7,7 +7,7 @@ Split up to create the preferred backend
 
 
 # TODO
- - [ ] add & apply points to tickets and book
+ - [x] add & apply points to tickets and book
  - [ ] add donation to tickets and book
  - [ ] update/fix dashboard
  - [ ] create educational visits 
