@@ -3,6 +3,7 @@ A website for a zoo with a hotel
 
 Create the html for the frontend 
 Split up to create the preferred backend 
+Python TODO will be complete by Dylan Ferrow
 
 
 
@@ -20,14 +21,13 @@ Split up to create the preferred backend
  - [ ] contact page function
 
 
-# php TODO
+### php TODO
  - [ ] move files
  - [ ] convert all to php
  - [ ] change files to include nav and footer 
 
 
-
-# python TODO 
+### python TODO 
  - [ ] move/convert files for js usage 
  - [ ] complete routes 
  - [ ] complete DB usage
