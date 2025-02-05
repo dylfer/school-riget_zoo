@@ -10,6 +10,7 @@
       href="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body
     class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center"
@@ -30,7 +31,14 @@
         Book your visit
       </h1>
 
-      <form class="space-y-6">
+      <!-- Points Display -->
+      <div class="mb-6 p-4 bg-blue-50 rounded-lg">
+        <p class="text-blue-800 font-semibold text-center">
+          Points you will earn: <span id="pointsDisplay">50</span>
+        </p>
+      </div>
+
+      <form class="space-y-6" id="ticketForm">
         <div class="grid grid-cols-2 gap-6">
           <!-- First Name & Last Name -->
           <div class="flex items-center gap-2">
@@ -126,6 +134,14 @@
           </div>
         </div>
 
+        <!-- Points Redemption -->
+        <div class="flex items-center space-x-2 bg-green-50 p-4 rounded-lg">
+          <input type="checkbox" id="usePoints" class="w-4 h-4 text-blue-600">
+          <label for="usePoints" class="text-gray-700">
+            Use available points for discount (100 points = £1 off)
+          </label>
+        </div>
+
         <!-- Submit Button -->
         <button
           type="submit"
@@ -135,6 +151,5 @@
         </button>
       </form>
     </section>
-    <script src="tickets.js"></script>
   </body>
 </html>
