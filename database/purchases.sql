@@ -10,6 +10,6 @@ CREATE TABLE purchases (
     `details` TEXT,
     PRIMARY KEY (`purchase_id`),
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
-    FOREIGN KEY (`room_booking_id`) REFERENCES `hotel_bookings`(`id`)
+    FOREIGN KEY (`room_booking_id`) REFERENCES `hotel_bookings`(`id`),
     FOREIGN KEY (`ticket_booking_id`) REFERENCES `zoo_bookings`(`id`)
 );
