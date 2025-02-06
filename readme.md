@@ -13,7 +13,7 @@ Python TODO will be complete by Dylan Ferrow
  - [x] create educational visits 
  - [x] complete home page
  - [ ] add all missing images 
- - [ ] add user flow/ function to settings (2fa verification boxes that can appear or new screen for it.)
+ - [x] add user flow/ function to settings (2fa verification boxes that can appear or new screen for it.)
  - [ ] login + signup functionality 
  - [ ] booking + tickets + payment basket functionality
  - [ ] settings + dashboard functionality
