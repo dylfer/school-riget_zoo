@@ -15,22 +15,34 @@ rooms = {
     "family": [{"unit_amount":100,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":190,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":290,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":420,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":550,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":700,"product":"prod_Rdf8BA17EFe3cO"}],
     "suite": [{"unit_amount":200,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":390,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":590,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":850,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":1150,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":1450,"product":"prod_RdfF0hJUtB0Oqr"}]
 }
+ticket = {
+    "adult": "price_1QpdYg03GYTbO3Nbm94ieSrf",
+    "child" : "price_1QpdZV03GYTbO3NbH66TFJSn"
+}
 
 
 @payment_router.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
-    basket = json.loads(request.cookies.get("basket"))
+    basket = request.cookies.get("basket")
     items = []
-    # TODO get token and get points and if points are aplied 
-    for item in basket:
-
-        items.append(
-            {"price_data": rooms[item["type"]][item["nights"]-1], "quantity": item["amount"]})
+    if basket is not None:
+        basket = json.loads(basket)
+    
+        # TODO get token and get points and if points are aplied 
+        # TODO add point discount to total
+        for item in basket:
+            if item["type"] == "room":
+                items.append(
+                {"price_data": rooms[item["rorm"]][item["nights"]-1], "quantity": item["amount"]})
+            else:
+                items.append(
+                    {"price": ticket[item["ticket"]], "quantity": item["amount"]})
     try:
         session = stripe.checkout.Session.create(
             ui_mode='embedded',
             line_items=items,
             mode='payment',
+            submit_type='book',
             return_url=YOUR_DOMAIN +
             '/return?session_id={CHECKOUT_SESSION_ID}',
         )
@@ -43,5 +55,6 @@ def create_checkout_session():
 @payment_router.route('/session-status', methods=['GET'])
 def session_status():
     session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+    print(session)
 
     return jsonify(status=session.status, customer_email=session.customer_details.email)

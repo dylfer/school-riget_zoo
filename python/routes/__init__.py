@@ -21,6 +21,6 @@ def register_routes(app, DB):
             #     return jsonify({'message': 'Invalid token'}), 401
 
     app.register_blueprint(Define_auth(DB))
-    app.redister_blueprint(Define_book(DB))
+    app.register_blueprint(Define_book(DB))
     app.register_blueprint(payment_router)
     app.register_blueprint(genral_router)
