@@ -1,8 +1,8 @@
 from flask import request, jsonify
-import jwt
-from routes.auth import Define
+from routes.auth import Define as Define_auth
 from routes.genral import genral_router
 from routes.payment import payment_router
+from routes.book import Define as Define_book
 
 
 def register_routes(app, DB):
@@ -20,6 +20,7 @@ def register_routes(app, DB):
             # except jwt.InvalidTokenError:
             #     return jsonify({'message': 'Invalid token'}), 401
 
-    app.register_blueprint(Define(DB))
+    app.register_blueprint(Define_auth(DB))
+    app.redister_blueprint(Define_book(DB))
     app.register_blueprint(payment_router)
     app.register_blueprint(genral_router)

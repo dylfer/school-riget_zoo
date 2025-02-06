@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+import hashlib
 import jwt
 import datetime
 import os

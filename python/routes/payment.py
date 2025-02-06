@@ -10,10 +10,10 @@ payment_router = Blueprint('Payment', __name__, url_prefix='/payment')
 YOUR_DOMAIN = 'http://127.0.0.1'
 
 rooms = {
-    "single": ["price_1QkNi703GYTbO3NbU35BkI2K", "price_1QkOJZ03GYTbO3NbuGBhvlSF", "price_1QkOXB03GYTbO3NbmmSUcrS0", "price_1QkOXv03GYTbO3NbVlkFhbEe", "price_1QkOYN03GYTbO3NblHoEkUo7", "price_1QkOZT03GYTbO3Nbcz6cwQ7V"],
-    "double": ["price_1QkNli03GYTbO3NbRK04BH1M", "price_1QkOIw03GYTbO3NbyN4JzLdC", "price_1QkOcU03GYTbO3NbwlQpmANF", "price_1QkOco03GYTbO3NbGdljCl7J", "price_1QkOdZ03GYTbO3NbEJv3avSV", "price_1QkOdo03GYTbO3NblTnH8NVm"],
-    "family": ["price_1QkNnq03GYTbO3NbZHgceQUi", "price_1QkOAA03GYTbO3NbRIFCHimM", "price_1QkOg403GYTbO3NbksEWivVX", "price_1QkOgU03GYTbO3NbpXYjdgN5", "price_1QkOgw03GYTbO3NbBJBv89RH", "price_1QkOhL03GYTbO3Nbqt291Fce"],
-    "suite": ["price_1QkNv503GYTbO3Nb9En854AP", "price_1QkO9I03GYTbO3NbKlYabqGh", "price_1QkOjl03GYTbO3NbvRHT48MY", "price_1QkOkB03GYTbO3NbVIWD8DMC", "price_1QkOkg03GYTbO3NbTs5VtLXA", "price_1QkOl603GYTbO3NbKCXgi7op"]
+    "single": [{"unit_amount":70,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":130,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":200,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":300,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":400,"product":"prod_Rdf2dSsmr2PX7Z"},{"unit_amount":600,"product":"prod_Rdf2dSsmr2PX7Z"}],
+    "double": [{"unit_amount":85,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":160,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":250,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":350,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":500,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":650,"product":"prod_Rdf507HCmznypm"}],
+    "family": [{"unit_amount":100,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":190,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":290,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":420,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":550,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":700,"product":"prod_Rdf8BA17EFe3cO"}],
+    "suite": [{"unit_amount":200,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":390,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":590,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":850,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":1150,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":1450,"product":"prod_RdfF0hJUtB0Oqr"}]
 }
 
 
@@ -21,11 +21,11 @@ rooms = {
 def create_checkout_session():
     basket = json.loads(request.cookies.get("basket"))
     items = []
-    print(type(basket))
+    # TODO get token and get points and if points are aplied 
     for item in basket:
 
         items.append(
-            {"price": rooms[item["type"]][item["nights"]-1], "quantity": item["amount"]})
+            {"price_data": rooms[item["type"]][item["nights"]-1], "quantity": item["amount"]})
     try:
         session = stripe.checkout.Session.create(
             ui_mode='embedded',
