@@ -1,4 +1,4 @@
-CREATE TABLE `rooms` (
+CREATE TABLE `bookings` (
   `room_no` INT(11) NOT NULL,
   `type` ENUM('Standard','Dobble','Triple','Suite','Dulux','Connecting') NOT NULL,
   `Beds` VARCHAR(36) NOT NULL,
