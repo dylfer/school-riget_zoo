@@ -18,7 +18,8 @@ function incrementValue(id) {
   const display = document.getElementById(id);
   const currentValue = tickets[id].value;
   if (currentValue < tickets[id].max) {
-    display.innerHTML = currentValue + 1;
+    tickets[id].value = currentValue + 1;
+    display.innerHTML = tickets[id].value;
   }
 }
 
@@ -26,7 +27,8 @@ function decrementValue(id) {
   const display = document.getElementById(id);
   const currentValue = tickets[id].value;
   if (currentValue > tickets[id].min) {
-    display.innerHTML = currentValue - 1;
+    tickets[id].value = currentValue - 1;
+    display.innerHTML = tickets[id].value;
   }
 }
 
