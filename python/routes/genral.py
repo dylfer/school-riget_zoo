@@ -70,3 +70,8 @@ def hotel():
 @genral_router.route('/tickets')
 def tickets():
     return render_template('base.html', content_template='tickets.html', title='Tickets')
+
+# Error handling routes
+@genral_router.app_errorhandler(404)
+def page_not_found(e):
+    return render_template('base.html', content_template='404.html', title='Page Not Found'), 404

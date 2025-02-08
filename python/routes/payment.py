@@ -9,6 +9,8 @@ payment_router = Blueprint('Payment', __name__, url_prefix='/payment')
 
 YOUR_DOMAIN = 'http://127.0.0.1'
 
+
+discounts = ["qoqi1SMnj9tKTcoMAyKdJELrzb1yMaQYpw63ieBMB8M0AY2VvRJI0EfZSQyrW5VDdEtPfw","7zxWzKQDqWrqgPT2QcHUz0nSnmXWBcEYo3Q8MPOiF6qNlXBU6QiFOzRM5X5wwo7yh0J85U","qkScGzbJuGcXxhJUoSt56lxPD5asNk9Jx3qkBUo17Kxa3MQQmGtboaOVIuct16VSeiPOit","QRAOsOkOpqPvpmbbilPyyMCNLtrnAROtChjuj9uUt6YtK8bHgiOviRevoVp2DrrsWpg7oF","JYNgvcuEB6WBlcFmHdbgbfdQHKy1dx5uNojhGxmorPVrMT4aHMe0RBMBVZOkrvQZsAbw58","2i2TzWk9WP78L6NBulalU6uW4JQBdOBn6DNAgPhUKZNRvZ4TlCwSofpU5oEqZfBJul93na"]
 rooms = {
     "single": [{"unit_amount":7000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":13000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":20000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":30000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":40000,"product":"prod_Rdf2dSsmr2PX7Z"},{"unit_amount":60000,"product":"prod_Rdf2dSsmr2PX7Z"}],
     "double": [{"unit_amount":8500,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":16000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":25000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":35000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":50000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":65000,"product":"prod_Rdf507HCmznypm"}],

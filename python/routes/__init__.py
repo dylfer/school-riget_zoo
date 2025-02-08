@@ -3,6 +3,7 @@ from routes.auth import Define as Define_auth
 from routes.genral import genral_router
 from routes.payment import payment_router
 from routes.book import Define as Define_book
+from routes.rooms import room_router
 
 
 def register_routes(app, DB):
@@ -24,3 +25,4 @@ def register_routes(app, DB):
     app.register_blueprint(Define_book(DB))
     app.register_blueprint(payment_router)
     app.register_blueprint(genral_router)
+    app.register_blueprint(room_router)

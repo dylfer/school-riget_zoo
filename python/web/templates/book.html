@@ -17,17 +17,10 @@
       Book your visit
     </h1>
 
-    <!-- Points Display -->
-    <div class="mb-6 p-4 bg-blue-50 rounded-lg">
-      <p class="text-blue-800 font-semibold text-center">
-        Points you will earn: <span id="pointsDisplay">0</span>
-      </p>
-    </div>
-
     <div class="space-y-6" id="bookingForm">
       <div class="grid grid-cols-2 gap-6">
         <!-- First Name & Last Name -->
-        <div>
+        <!-- <div>
           <label class="block text-gray-700 mb-2" for="firstName"
             >First Name</label
           >
@@ -45,10 +38,10 @@
           <input
             type="text"
             id="lastName"
-            class="w-full p-2 border rounded-lg"
+            class="w-full p-2 border rounded-lg"  
             required
           />
-        </div>
+        </div> -->
 
         <!-- Check in & Check out dates -->
         <div>
@@ -116,7 +109,10 @@
       </div>
 
       <!-- Points Redemption -->
-      <div class="flex items-center space-x-2 bg-green-50 p-4 rounded-lg">
+      <div
+        class="flex items-center space-x-2 bg-green-50 p-4 rounded-lg hidden"
+        id="usepoints"
+      >
         <input type="checkbox" id="usePoints" class="w-4 h-4 text-blue-600" />
         <label for="usePoints" class="text-gray-700">
           Use available points for discount (1000 points = £1 off)
