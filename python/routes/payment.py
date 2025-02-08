@@ -10,10 +10,10 @@ payment_router = Blueprint('Payment', __name__, url_prefix='/payment')
 YOUR_DOMAIN = 'http://127.0.0.1'
 
 rooms = {
-    "single": [{"unit_amount":70,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":130,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":200,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":300,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":400,"product":"prod_Rdf2dSsmr2PX7Z"},{"unit_amount":600,"product":"prod_Rdf2dSsmr2PX7Z"}],
-    "double": [{"unit_amount":85,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":160,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":250,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":350,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":500,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":650,"product":"prod_Rdf507HCmznypm"}],
-    "family": [{"unit_amount":100,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":190,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":290,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":420,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":550,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":700,"product":"prod_Rdf8BA17EFe3cO"}],
-    "suite": [{"unit_amount":200,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":390,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":590,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":850,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":1150,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":1450,"product":"prod_RdfF0hJUtB0Oqr"}]
+    "single": [{"unit_amount":7000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":13000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":20000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":30000,"product":"prod_Rdf2dSsmr2PX7Z"}, {"unit_amount":40000,"product":"prod_Rdf2dSsmr2PX7Z"},{"unit_amount":60000,"product":"prod_Rdf2dSsmr2PX7Z"}],
+    "double": [{"unit_amount":8500,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":16000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":25000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":35000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":50000,"product":"prod_Rdf507HCmznypm"}, {"unit_amount":65000,"product":"prod_Rdf507HCmznypm"}],
+    "family": [{"unit_amount":10000,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":19000,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":29000,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":42000,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":55000,"product":"prod_Rdf8BA17EFe3cO"}, {"unit_amount":70000,"product":"prod_Rdf8BA17EFe3cO"}],
+    "suite": [{"unit_amount":20000,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":39000,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":59000,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":85000,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":115000,"product":"prod_RdfF0hJUtB0Oqr"}, {"unit_amount":145000,"product":"prod_RdfF0hJUtB0Oqr"}]
 }
 ticket = {
     "adult": "price_1QpdYg03GYTbO3Nbm94ieSrf",
@@ -32,12 +32,15 @@ def create_checkout_session():
         # TODO add point discount to total
         for item in basket:
             if item["type"] == "room":
+                price_data = rooms[item["room"]][item["nights"]-1]
+                price_data.update({"currency": "gbp"})
                 items.append(
-                {"price_data": rooms[item["rorm"]][item["nights"]-1], "quantity": item["amount"]})
+                    {"price_data": price_data, "quantity": item["amount"]})
             else:
                 items.append(
                     {"price": ticket[item["ticket"]], "quantity": item["amount"]})
     try:
+        print(items)
         session = stripe.checkout.Session.create(
             ui_mode='embedded',
             line_items=items,
