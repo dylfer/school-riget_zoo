@@ -43,16 +43,21 @@ function updateBasket() {
   const points = calculatePoints();
   const date = document.getElementById("checkIn");
   const applyPoints = document.getElementById("usePoints").checked;
-  if (tickets.children.value === 0) {
-    document.cookie = `basket=${JSON.stringify([
-      { type: "ticket", ticket: "adult", amount: tickets.adults.value },
-      { type: "ticket", ticket: "child", amount: tickets.children.value },
-    ])}; `;
-  }
-  document.cookie = `basket=${JSON.stringify([
+  const basket = [
     { type: "ticket", ticket: "adult", amount: tickets.adults.value },
-  ])}; `;
+  ];
+  if (tickets.children.value != 0) {
+    basket.push({
+      type: "ticket",
+      ticket: "child",
+      amount: tickets.children.value,
+    });
+  }
+  document.cookie = `basket=${JSON.stringify(basket)}; `;
+  window.location.href = "/checkout";
 }
+
+function updateBooking() {}
 
 function accountPoints() {
   // get token and request if user has points then display the usepoints

@@ -24,7 +24,7 @@
       </p>
     </div>
 
-    <form class="space-y-6" id="bookingForm">
+    <div class="space-y-6" id="bookingForm">
       <div class="grid grid-cols-2 gap-6">
         <!-- First Name & Last Name -->
         <div>
@@ -108,8 +108,8 @@
         <label class="block text-gray-700 mb-2" for="roomType">Room Type</label>
         <select id="roomType" class="w-full p-2 border rounded-lg" required>
           <option value="">Select a room type</option>
-          <option value="standard">Single Room</option>
-          <option value="deluxe">Double Room</option>
+          <option value="single">Single Room</option>
+          <option value="double">Double Room</option>
           <option value="suite">Suite</option>
           <option value="family">Family Room</option>
         </select>
@@ -127,10 +127,11 @@
       <button
         type="submit"
         class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        id="pay"
       >
         Submit Booking
       </button>
-    </form>
+    </div>
   </section>
 
   <!-- <script>
@@ -189,4 +190,5 @@
         });
       });
     </script> -->
+  <script src="/book.js"></script>
 </body>
