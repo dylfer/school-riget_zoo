@@ -35,11 +35,6 @@ function login() {
     username: username,
     email: email,
     password: password,
-    TandC: TandC,
-    // TODO add imputs for name values
-    first_name: "",
-    last_name: "",
-    mfa: mfa,
   });
 
   xhr.send(data);
