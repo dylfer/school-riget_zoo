@@ -1,164 +1,171 @@
-<body
-  class="min-h-screen bg-[url('/images/book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center"
+<style>
+  body {
+    min-height: 100vh;
+    background-image: url("/images/book-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+
+<div class="flex items-center justify-center"></div>
+<section
+  class="bg-white/80 rounded-lg mx-auto p-8 max-w-2xl shadow-lg relative w-full"
 >
-  <section
-    class="bg-white/80 rounded-lg mx-auto p-8 max-w-2xl shadow-lg relative w-full"
-  >
-    <!-- Logo -->
-    <div class="absolute top-8 right-8">
-      <img
-        src="/images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
-        alt="Logo"
-        class="w-16 h-16 object-contain"
-      />
-    </div>
+  <!-- Logo -->
+  <div class="absolute top-8 right-8">
+    <img
+      src="/images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
+      alt="Logo"
+      class="w-16 h-16 object-contain"
+    />
+  </div>
 
-    <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">
-      Book your visit
-    </h1>
+  <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">
+    Book your visit
+  </h1>
 
-    <div class="space-y-6" id="ticketForm">
-      <div class="grid grid-cols-2 gap-6">
-        <!-- First Name & Last Name -->
-        <div class="flex items-center gap-2">
-          <input
-            type="text"
-            id="firstName"
-            class="flex-1 p-2 border rounded-lg"
-            placeholder="First Name"
-            required
-          />
-        </div>
-        <div class="flex items-center gap-2">
-          <input
-            type="text"
-            id="lastName"
-            class="flex-1 p-2 border rounded-lg"
-            placeholder="Last Name"
-            required
-          />
-        </div>
-      </div>
-
-      <!-- Visit Date -->
-      <div>
-        <label class="block text-gray-700 mb-2" for="checkIn">Visit Date</label>
+  <div class="space-y-6" id="ticketForm">
+    <div class="grid grid-cols-2 gap-6">
+      <!-- First Name & Last Name -->
+      <div class="flex items-center gap-2">
         <input
-          type="date"
-          id="checkIn"
-          class="w-full p-2 border rounded-lg"
+          type="text"
+          id="firstName"
+          class="flex-1 p-2 border rounded-lg"
+          placeholder="First Name"
           required
         />
       </div>
-      <!-- Number of Adults & Children -->
-      <div class="space-y-4">
-        <div class="flex items-center gap-2">
-          <label class="text-gray-700 w-96">Number of Adult Tickets</label>
-          <div class="ml-4 flex items-center gap-4">
-            <button
-              type="button"
-              onclick="decrementValue('adults')"
-              class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-              >
-                <path
-                  fill="currentColor"
-                  d="M2 6a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 2 6"
-                />
-              </svg>
-            </button>
-            <div id="adults" class="w-20 p-2 border rounded-lg text-center">
-              1
-            </div>
-            <button
-              type="button"
-              onclick="incrementValue('adults')"
-              class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-              >
-                <path
-                  fill="currentColor"
-                  d="M6.5 1.75a.75.75 0 0 0-1.5 0V5H1.75a.75.75 0 0 0 0 1.5H5v3.25a.75.75 0 0 0 1.5 0V6.5h3.25a.75.75 0 0 0 0-1.5H6.5z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2">
-          <label class="text-gray-700 w-96">Number of Children Tickets</label>
-          <div class="ml-4 flex items-center gap-4">
-            <button
-              type="button"
-              onclick="decrementValue('children')"
-              class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-              >
-                <path
-                  fill="currentColor"
-                  d="M2 6a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 2 6"
-                />
-              </svg>
-            </button>
-            <div id="children" class="w-20 p-2 border rounded-lg text-center">
-              0
-            </div>
-            <button
-              type="button"
-              onclick="incrementValue('children')"
-              class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-              >
-                <path
-                  fill="currentColor"
-                  d="M6.5 1.75a.75.75 0 0 0-1.5 0V5H1.75a.75.75 0 0 0 0 1.5H5v3.25a.75.75 0 0 0 1.5 0V6.5h3.25a.75.75 0 0 0 0-1.5H6.5z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+      <div class="flex items-center gap-2">
+        <input
+          type="text"
+          id="lastName"
+          class="flex-1 p-2 border rounded-lg"
+          placeholder="Last Name"
+          required
+        />
       </div>
-
-      <!-- Points Redemption -->
-      <div
-        class="flex items-center space-x-2 bg-green-50 p-4 rounded-lg hidden"
-        id="usepoints"
-      >
-        <input type="checkbox" id="usePoints" class="w-4 h-4 text-blue-600" />
-        <label for="usePoints" class="text-gray-700">
-          Use available points for discount (100 points = £1 off)
-        </label>
-      </div>
-
-      <!-- Submit Button -->
-      <button
-        type="submit"
-        id="pay"
-        class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        Pay
-      </button>
     </div>
-  </section>
-  <script src="/tickets.js"></script>
-</body>
+
+    <!-- Visit Date -->
+    <div>
+      <label class="block text-gray-700 mb-2" for="checkIn">Visit Date</label>
+      <input
+        type="date"
+        id="checkIn"
+        class="w-full p-2 border rounded-lg"
+        required
+      />
+    </div>
+    <!-- Number of Adults & Children -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <label class="text-gray-700 w-96">Number of Adult Tickets</label>
+        <div class="ml-4 flex items-center gap-4">
+          <button
+            type="button"
+            onclick="decrementValue('adults')"
+            class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                fill="currentColor"
+                d="M2 6a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 2 6"
+              />
+            </svg>
+          </button>
+          <div id="adults" class="w-20 p-2 border rounded-lg text-center">
+            1
+          </div>
+          <button
+            type="button"
+            onclick="incrementValue('adults')"
+            class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                fill="currentColor"
+                d="M6.5 1.75a.75.75 0 0 0-1.5 0V5H1.75a.75.75 0 0 0 0 1.5H5v3.25a.75.75 0 0 0 1.5 0V6.5h3.25a.75.75 0 0 0 0-1.5H6.5z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <label class="text-gray-700 w-96">Number of Children Tickets</label>
+        <div class="ml-4 flex items-center gap-4">
+          <button
+            type="button"
+            onclick="decrementValue('children')"
+            class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                fill="currentColor"
+                d="M2 6a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 2 6"
+              />
+            </svg>
+          </button>
+          <div id="children" class="w-20 p-2 border rounded-lg text-center">
+            0
+          </div>
+          <button
+            type="button"
+            onclick="incrementValue('children')"
+            class="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center text-xl font-bold"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                fill="currentColor"
+                d="M6.5 1.75a.75.75 0 0 0-1.5 0V5H1.75a.75.75 0 0 0 0 1.5H5v3.25a.75.75 0 0 0 1.5 0V6.5h3.25a.75.75 0 0 0 0-1.5H6.5z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Points Redemption -->
+    <div
+      class="flex items-center space-x-2 bg-green-50 p-4 rounded-lg hidden"
+      id="usepoints"
+    >
+      <input type="checkbox" id="usePoints" class="w-4 h-4 text-blue-600" />
+      <label for="usePoints" class="text-gray-700">
+        Use available points for discount (100 points = £1 off)
+      </label>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      id="pay"
+      class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+    >
+      Pay
+    </button>
+  </div>
+</section>
+<script src="/tickets.js"></script>

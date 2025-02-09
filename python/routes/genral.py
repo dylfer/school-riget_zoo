@@ -25,6 +25,7 @@ def termsandconditions():
 def privacy():
     return render_template('base.html', content_template='privacy.html', title='Privacy')
 
+
 @genral_router.route('/education')
 def education():
     return render_template('base.html', content_template='education.html', title='Education')

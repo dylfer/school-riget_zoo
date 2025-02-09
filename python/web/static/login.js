@@ -1,0 +1,46 @@
+function login() {
+  var user = document.getElementById("username").value; // can be email or username
+  var password = document.getElementById("password").value;
+  var error = document.getElementById("error");
+  var errorBox = document.getElementById("error-box");
+  var success = document.getElementById("success");
+  var successBox = document.getElementById("success-box");
+  if (!user || !password) {
+    error.innerHTML = "All fields are required!";
+    errorBox.classList.remove("hidden");
+    return;
+  }
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "api/auth/login", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      success.innerHTML = JSON.parse(xhr.responseText).message;
+      errorBox.classList.add("hidden");
+      successBox.classList.remove("hidden");
+      setTimeout(() => {
+        if (JSON.parse(xhr.responseText).mfa) {
+          window.location.href = "/registermfa";
+        } else {
+          window.location.href = "/dashboard";
+        }
+      }, 2000);
+    } else if (xhr.readyState === 4) {
+      error.innerHTML = JSON.parse(xhr.responseText).error;
+      errorBox.classList.remove("hidden");
+    }
+  };
+
+  const data = JSON.stringify({
+    username: username,
+    email: email,
+    password: password,
+    TandC: TandC,
+    // TODO add imputs for name values
+    first_name: "",
+    last_name: "",
+    mfa: mfa,
+  });
+
+  xhr.send(data);
+}

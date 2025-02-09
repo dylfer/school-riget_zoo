@@ -1,6 +1,14 @@
-<body
-  class="min-h-screen bg-[url('/images/book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center"
->
+<style>
+  body {
+    min-height: 100vh;
+    background: url("/images/book-bg.png") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<div class="flex items-center justify-center">
   <section
     class="bg-white/60 rounded-lg mx-auto p-8 max-w-2xl shadow-lg relative w-full"
   >
@@ -19,30 +27,6 @@
 
     <div class="space-y-6" id="bookingForm">
       <div class="grid grid-cols-2 gap-6">
-        <!-- First Name & Last Name -->
-        <!-- <div>
-          <label class="block text-gray-700 mb-2" for="firstName"
-            >First Name</label
-          >
-          <input
-            type="text"
-            id="firstName"
-            class="w-full p-2 border rounded-lg"
-            required
-          />
-        </div>
-        <div>
-          <label class="block text-gray-700 mb-2" for="lastName"
-            >Last Name</label
-          >
-          <input
-            type="text"
-            id="lastName"
-            class="w-full p-2 border rounded-lg"  
-            required
-          />
-        </div> -->
-
         <!-- Check in & Check out dates -->
         <div>
           <label class="block text-gray-700 mb-2" for="checkIn"
@@ -129,62 +113,5 @@
       </button>
     </div>
   </section>
-
-  <!-- <script>
-      // Point values
-      const POINTS_PER_ADULT = 50;
-      const POINTS_PER_CHILD = 25;
-
-      // Get DOM elements
-      const adultsInput = document.getElementById("adults");
-      const childrenInput = document.getElementById("children");
-      const pointsDisplay = document.getElementById("pointsDisplay");
-      const form = document.getElementById("bookingForm");
-      const usePointsCheckbox = document.getElementById("usePoints");
-      const pointsToRedeemInput = document.getElementById("pointsToRedeem");
-
-      // Function to calculate total points
-      function calculatePoints() {
-        const adults = parseInt(adultsInput.value) || 0;
-        const children = parseInt(childrenInput.value) || 0;
-
-        const totalPoints =
-          adults * POINTS_PER_ADULT + children * POINTS_PER_CHILD;
-        pointsDisplay.textContent = totalPoints;
-      }
-
-      // Toggle points redemption input
-      usePointsCheckbox.addEventListener("change", function () {
-        pointsToRedeemInput.disabled = !this.checked;
-        if (!this.checked) {
-          pointsToRedeemInput.value = "";
-        }
-      });
-
-      // Add event listeners
-      adultsInput.addEventListener("input", calculatePoints);
-      childrenInput.addEventListener("input", calculatePoints);
-
-      // Calculate initial points
-      calculatePoints();
-
-      // Handle form submission
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const pointsEarned = pointsDisplay.textContent;
-        const pointsRedeemed = usePointsCheckbox.checked
-          ? pointsToRedeemInput.value
-          : 0;
-        const discount = pointsRedeemed / 100; // $1 per 100 points
-
-        Swal.fire({
-          title: "Booking Successful!",
-          icon: "success",
-          confirmButtonText: "OK",
-          confirmButtonColor: "#2563eb",
-        });
-      });
-    </script> -->
   <script src="/book.js"></script>
-</body>
+</div>
