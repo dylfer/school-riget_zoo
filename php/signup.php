@@ -1,3 +1,51 @@
+<?php
+// Database connection
+$servername = "localhost";
+$username = "your_db_username";
+$password = "your_db_password";
+$dbname = "your_db_name";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Function to generate a random string for token_secret and 2fa_secret
+function generateRandomString($length = 32) {
+    return bin2hex(random_bytes($length));
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = uniqid();
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $phone = $_POST['phone'];
+    $token_secret = generateRandomString();
+    $two_fa_secret = generateRandomString();
+
+    $sql = "INSERT INTO users (id, username, email, password, token_secret, 2fa_secret, first_name, last_name, phone)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssissss", $id, $username, $email, $password, $educational, $token_secret, $two_fa_secret, $first_name, $last_name, $phone);
+
+    if ($stmt->execute()) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
