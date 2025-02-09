@@ -1,4 +1,79 @@
 <!DOCTYPE html>
+<?php
+// Start session
+session_start();
+
+// Database configuration
+$db_host = 'localhost';
+$db_user = 'your_username';
+$db_pass = 'your_password';
+$db_name = 'your_database_name'; // Update this to match your actual database name
+
+// Create database connection
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Function to sanitize user inputs
+function sanitize_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get and sanitize user inputs
+    $username = sanitize_input($_POST['username']);
+    $password = $_POST['password'];
+    
+    // Prepare SQL statement to prevent SQL injection
+    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
+    $stmt->bind_param("ss", $username, $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        
+        // Verify password
+        if (password_verify($password, $user['password'])) {
+            // Password is correct, start a new session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            
+            // If remember me is checked
+            if (isset($_POST['remember']) && $_POST['remember'] == 'on') {
+                // Set cookies for 30 days
+                setcookie("user_login", $user['username'], time() + (30 * 24 * 60 * 60));
+            }
+            
+            // Redirect to dashboard or home page
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $error_message = "Invalid password";
+        }
+    } else {
+        $error_message = "User not found";
+    }
+    
+    $stmt->close();
+}
+
+$conn->close();
+
+// If there's an error, send it back to the login page
+if (isset($error_message)) {
+    $_SESSION['error'] = $error_message;
+    header("Location: login.php");
+    exit();
+}
+?>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,7 +99,7 @@
     <script src="login.js"></script>
     <div class="login">
       <div class="w-96 bg-white bg-opacity-90 text-black rounded-lg p-8">
-        <form action="">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
           <h1 class="text-2xl text-center">Login</h1>
           <div>
             <img
