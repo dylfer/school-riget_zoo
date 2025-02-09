@@ -23,17 +23,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $educational = isset($_POST['educational']) ? 1 : 0;
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $phone = $_POST['phone'];
     $token_secret = generateRandomString();
     $two_fa_secret = generateRandomString();
 
-    $sql = "INSERT INTO users (id, username, email, password, token_secret, 2fa_secret, first_name, last_name, phone)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (id, username, email, password, educational, token_secret, 2fa_secret, first_name, last_name, phone)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssissss", $id, $username, $email, $password, $educational, $token_secret, $two_fa_secret, $first_name, $last_name, $phone);
+    $stmt->bind_param("ssssisssss", $id, $username, $email, $password, $educational, $token_secret, $two_fa_secret, $first_name, $last_name, $phone);
 
     if ($stmt->execute()) {
         echo "New record created successfully";
@@ -46,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
