@@ -60,7 +60,7 @@
                         <h2 class="text-3xl font-semibold text-gray-900 mb-6 pt-4">
                             Contact Us
                         </h2>
-                        <p class="text-lg text-gray-600">If you have any questions about this privacy policy, please <a href="contact.html" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">contact us</a> at 
+                        <p class="text-lg text-gray-600">If you have any questions about this privacy policy, please <a href="contact.php" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">contact us</a> at 
                             <a href="mailto:privacy@example.com" class="text-blue-600 hover:text-blue-800 transition-colors duration-200">privacy@example.com</a>.
                         </p>
                     </section>
