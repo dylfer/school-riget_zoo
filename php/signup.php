@@ -1,18 +1,6 @@
 <?php
 include 'components/navbar.php';
 include 'scripts/DB_conect.php';
-// Database connection
-$servername = "localhost";
-$username = "your_db_username";
-$password = "your_db_password";
-$dbname = "your_db_name";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 // Function to generate a random string for token_secret and 2fa_secret
 function generateRandomString($length = 32) {
