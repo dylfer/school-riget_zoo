@@ -1,6 +1,46 @@
 <?php
     include 'components/navbar.php';
+    
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Get form data and sanitize
+  $name = filter_var($_POST['name']);
+  $contact = filter_var($_POST['contact']);
+  $message = filter_var($_POST['message']);
+  
+  // Validate inputs
+  $errors = [];
+  if (empty($name)) {
+      $errors[] = "Name is required";
+  }
+  if (empty($contact)) {
+      $errors[] = "Email/Phone is required";
+  }
+  if (empty($message)) {
+      $errors[] = "Message is required";
+  }
+  
+  if (empty($errors)) {
+      // Email setup
+      $to = "Admin@Rigetszoo.com"; // Replace with your email
+      $subject = "New Contact Form Submission";
+      $email_message = "Name: $name\n";
+      $email_message .= "Contact: $contact\n\n";
+      $email_message .= "Message:\n$message";
+      
+      $headers = "From: $contact";
+      
+      // Send email
+      if (mail($to, $subject, $email_message, $headers)) {
+          $_SESSION['success'] = "Thank you for your message. We'll get back to you soon!";
+      } else {
+          $_SESSION['error'] = "Sorry, there was an error sending your message.";
+      }
+  } else {
+      $_SESSION['error'] = implode("<br>", $errors);
+  }
+}
 ?>
+  
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -90,3 +130,4 @@
     include 'components/footer.php';
   ?>
 </html>
+
