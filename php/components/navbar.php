@@ -2,7 +2,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<div class="flex w-full justify-between items-center p-4">
+<div class="flex w-full justify-between items-center p-4 bg-slate-50/20">
   <div class="flex items-center">
     <img src="../php/images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png" alt="Logo" class="rounded-full w-14 h-14" />
   </div>

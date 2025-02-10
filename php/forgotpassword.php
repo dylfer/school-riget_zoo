@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="static/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="flex w-dvw h-dvh justify-center items-center bg-slate-700">
@@ -23,7 +23,7 @@
           class="block mx-auto w-3/5 h-auto"
         /> -->
         <p class="text-center m-2 p-1">
-          Enter you'r email or username and you will get sent a email with a
+          Enter your email or username and you will get sent a email with a
           password reset link.
         </p>
         <div class="relative w-full h-12 my-8 rounded-full">
