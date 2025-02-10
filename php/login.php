@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+include 'components/navbar.php';
+include 'scripts/DB_conect.php';
+
 // Start session
 session_start();
 
@@ -167,4 +170,7 @@ if (isset($error_message)) {
       </div>
     </div>
   </body>
+  <?php
+    include 'components/footer.php';
+?>
 </html>

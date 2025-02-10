@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -109,4 +112,7 @@
       </p>
     </div>
   </body>
+  <?php
+    include 'components/navbar.php';
+  ?>
 </html>

@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,4 +19,8 @@
       <!-- Checkout will insert the payment form here -->
     </div>
   </body>
+  <?php
+    include 'components/footer.php';
+  ?>
+
 </html>

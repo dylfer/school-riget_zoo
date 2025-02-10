@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,4 +21,7 @@
       </p>
     </section>
   </body>
+  <?php
+    include 'components/footer.php';
+  ?>
 </html>

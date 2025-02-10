@@ -1,4 +1,6 @@
 <?php
+  include 'components/navbar.php';
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $room_type = $_POST['room_type'];
         $check_in_date = $_POST['check_in_date'];
@@ -50,7 +52,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center">
-    <section class="bg-white/60 rounded-lg mx-auto p-8 max-w-2xl shadow-lg relative w-full mx-4">
+    <section class="bg-white/60 rounded-lg p-8 max-w-2xl shadow-lg relative w-full mx-4">
       <!-- Logo -->
       <div class="absolute top-8 right-8">
         <img src="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png" 
@@ -181,4 +183,7 @@
       });
     </script>
   </body>
+<?php
+    include 'components/footer.php';
+?>
 </html>

@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +19,7 @@
     class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center"
   >
     <section
-      class="bg-white/80 rounded-lg mx-auto p-8 max-w-2xl shadow-lg relative w-full mx-4"
+      class="bg-white/80 rounded-lg p-8 max-w-2xl shadow-lg relative w-full mx-4"
     >
       <!-- Logo -->
       <div class="absolute top-8 right-8">
@@ -152,4 +155,7 @@
       </form>
     </section>
   </body>
+  <?php
+    include 'components/navbar.php';
+  ?>
 </html>

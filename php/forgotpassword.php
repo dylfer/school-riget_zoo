@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,4 +48,7 @@
     </div>
     <script src="forgotpassword.js"></script>
   </body>
+  <?php
+    include 'components/footer.php';
+?>
 </html>

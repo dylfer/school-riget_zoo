@@ -1,4 +1,6 @@
 <?php
+include 'components/navbar.php';
+include 'scripts/DB_conect.php';
 // Database connection
 $servername = "localhost";
 $username = "your_db_username";
@@ -188,4 +190,7 @@ $conn->close();
       </div>
     </div>
   </body>
+  <?php
+    include 'components/footer.php';
+ ?>
 </html>
