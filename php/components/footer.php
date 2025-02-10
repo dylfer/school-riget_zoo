@@ -7,19 +7,19 @@
       <!-- Navigation Links -->
       <div class="flex flex-col space-y-3">
         <h2 class="text-xl font-bold mb-4">Navigation</h2>
-        <a href="index.html" class="hover:text-gray-300 transition-colors"
+        <a href="index.php" class="hover:text-gray-300 transition-colors"
           >Home</a
         >
-        <a href="zoo-tickets.html" class="hover:text-gray-300 transition-colors"
+        <a href="tickets.php" class="hover:text-gray-300 transition-colors"
           >Zoo Tickets</a
         >
-        <a href="hotel-rooms.html" class="hover:text-gray-300 transition-colors"
+        <a href="hotel.php" class="hover:text-gray-300 transition-colors"
           >Hotel Rooms</a
         >
-        <a href="about-us.html" class="hover:text-gray-300 transition-colors"
+        <a href="about.php" class="hover:text-gray-300 transition-colors"
           >About Us</a
         >
-        <a href="contact-us.html" class="hover:text-gray-300 transition-colors"
+        <a href="contact.php" class="hover:text-gray-300 transition-colors"
           >Contact Us</a
         >
       </div>
@@ -27,16 +27,16 @@
       <!-- Account Links -->
       <div class="flex flex-col space-y-3">
         <h2 class="text-xl font-bold mb-4">Account</h2>
-        <a href="login.html" class="hover:text-gray-300 transition-colors"
+        <a href="login.php" class="hover:text-gray-300 transition-colors"
           >Login</a
         >
-        <a href="signup.html" class="hover:text-gray-300 transition-colors"
+        <a href="signup.php" class="hover:text-gray-300 transition-colors"
           >Sign Up</a
         >
-        <a href="dashboard.html" class="hover:text-gray-300 transition-colors"
+        <a href="dashboard.php" class="hover:text-gray-300 transition-colors"
           >Dashboard</a
         >
-        <a href="bookings.html" class="hover:text-gray-300 transition-colors"
+        <a href="bookings.php" class="hover:text-gray-300 transition-colors"
           >Bookings</a
         >
       </div>
