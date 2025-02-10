@@ -18,7 +18,7 @@
   <body
     class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed "
   >
-  <div class="flex items-center justify-center">
+  <div class="min-h-screen flex items-center justify-center">
     <section
       class="bg-white/80 rounded-lg p-8 max-w-2xl shadow-lg relative w-full mx-4"
     >

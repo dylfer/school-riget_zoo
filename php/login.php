@@ -79,9 +79,10 @@ if (isset($error_message)) {
     <link rel="stylesheet" href="style.css" />
   </head>
   <body
-    class="flex justify-center items-center min-h-screen bg-cover bg-center"
-    style="background-image: url('Login_bg.png')"
+    class="min-h-screen bg-cover bg-center"
+    style="background-image: url('images/Login_bg.png')"
   >
+  <div class="min-h-screen flex justify-center items-center">
     <script src="login.js"></script>
     <div class="login">
       <div class="w-96 bg-white bg-opacity-90 text-black rounded-lg p-8">
@@ -89,7 +90,7 @@ if (isset($error_message)) {
           <h1 class="text-2xl text-center">Login</h1>
           <div>
             <img
-              src="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
+              src="images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
               alt="Logo"
               class="block mx-auto w-3/5 h-auto"
             />
@@ -129,7 +130,7 @@ if (isset($error_message)) {
               ><input type="checkbox" class="accent-black mr-1.5" />Remember
               me</label
             >
-            <a href="forgotpassword.html" class="text-green-700 hover:underline"
+            <a href="forgotpassword.php" class="text-green-700 hover:underline"
               >Forgot password?</a
             >
           </div>
@@ -143,7 +144,7 @@ if (isset($error_message)) {
             <p>
               Don't have an account?
               <a
-                href="signup.html"
+                href="signup.php"
                 class="text-black font-semibold hover:underline"
                 >Signup</a
               >
@@ -152,6 +153,7 @@ if (isset($error_message)) {
         </form>
       </div>
     </div>
+</div>
   </body>
   <?php
     include 'components/footer.php';

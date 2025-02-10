@@ -55,13 +55,14 @@ $conn->close();
     <title>Sign Up</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="static/style.css" />
   </head>
   <body
-    class="flex justify-center items-center min-h-screen bg-cover bg-center"
-    style="background-image: url('SignUp_bg.png')"
+    class="bg-cover bg-center"
+    style="background-image: url('images/SignUp_bg.png')"
   >
     <script src="login.js"></script>
+    <div class="flex justify-center items-center min-h-screen">
     <div class="login">
       <div
         class="wrapper w-96 bg-white bg-opacity-90 text-black rounded-lg p-8"
@@ -71,7 +72,7 @@ $conn->close();
           <div>
             <!-- Logo -->
             <img
-              src="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
+              src="images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
               alt="Logo"
               class="block mx-auto w-3/5 h-auto"
             />
@@ -166,9 +167,9 @@ $conn->close();
           <div class="text-sm text-center my-5">
             <!-- Link to Login Page -->
             <p>
-              Alredy have an account?
+              Already have an account?
               <a
-                href="login.html"
+                href="login.php"
                 class="text-black font-semibold hover:underline"
                 >Login</a
               >
@@ -177,6 +178,7 @@ $conn->close();
         </form>
       </div>
     </div>
+</div>
   </body>
   <?php
     include 'components/footer.php';
