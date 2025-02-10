@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 include 'components/navbar.php';
 include 'scripts/DB_conect.php';
@@ -16,12 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get and sanitize user inputs
     $username = sanitize_input($_POST['username']);
     $password = $_POST['password'];
+    echo $username . " " . $password;
     
     // Prepare SQL statement to prevent SQL injection
     $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ? OR email = ?");
     $stmt->bind_param("ss", $username, $username);
     $stmt->execute();
     $result = $stmt->get_result();
+    
     
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
@@ -60,6 +61,7 @@ if (isset($error_message)) {
     exit();
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -69,6 +71,7 @@ if (isset($error_message)) {
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link href="static/style.css" rel="stylesheet" />
     <link
       rel="icon"
       href="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
@@ -82,11 +85,19 @@ if (isset($error_message)) {
     class="min-h-screen bg-cover bg-center"
     style="background-image: url('images/Login_bg.png')"
   >
-  <div class="min-h-screen flex justify-center items-center">
+  <div class="min-h-screen flex flex-col justify-center items-center gap-8">
+    <?php
+    if (isset($_SESSION['error'])) {
+      if ($_SESSION['error']) {
+        echo "<div class='error-message text-red-600 bg-gray-200 text-center w-fit p-8 rounded-lg'>" . $_SESSION['error'] . "</div>";
+        unset($_SESSION['error']);
+      }
+    }
+    ?>
     <script src="login.js"></script>
     <div class="login">
       <div class="w-96 bg-white bg-opacity-90 text-black rounded-lg p-8">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <form action="login.php" method="POST">
           <h1 class="text-2xl text-center">Login</h1>
           <div>
             <img
@@ -127,7 +138,7 @@ if (isset($error_message)) {
           </div>
           <div class="flex justify-between text-sm my-4">
             <label class="flex items-center"
-              ><input type="checkbox" class="accent-black mr-1.5" />Remember
+              ><input type="checkbox" class="accent-black mr-1.5" name="remember" />Remember
               me</label
             >
             <a href="forgotpassword.php" class="text-green-700 hover:underline"
