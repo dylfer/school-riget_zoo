@@ -50,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
-  <body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex items-center justify-center py-12">
+  <body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
+    <div class="flex items-center justify-center py-12">
     <div class="container mx-auto max-w-4xl px-4">
       <div class="bg-white shadow-2xl rounded-2xl overflow-hidden grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
         <!-- Contact Form Section -->
@@ -125,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       </div>
     </div>
+</div>
   </body>
   <?php
     include 'components/footer.php';
