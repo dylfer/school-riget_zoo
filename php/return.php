@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="min-h-screen">
-    <section id="success" class="hidden">
+    <section id="success" class="">
       <p class="text-black">
         We appreciate your business! A confirmation email will be sent to
         <span id="customer-email"></span>. If you have any questions, please
