@@ -10,21 +10,22 @@
     <title>Ticket Page</title>
     <link
       rel="icon"
-      href="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
+      href="images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body
-    class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center"
+    class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed "
   >
+  <div class="flex items-center justify-center">
     <section
       class="bg-white/80 rounded-lg p-8 max-w-2xl shadow-lg relative w-full mx-4"
     >
       <!-- Logo -->
       <div class="absolute top-8 right-8">
         <img
-          src="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
+          src="images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
           alt="Logo"
           class="w-16 h-16 object-contain"
         />
@@ -154,8 +155,9 @@
         </button>
       </form>
     </section>
+    </div>
   </body>
   <?php
-    include 'components/navbar.php';
+    include 'components/footer.php';
   ?>
 </html>
