@@ -1,44 +1,38 @@
 <?php
   include 'components/navbar.php';
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $room_type = $_POST['room_type'];
-        $check_in_date = $_POST['check_in_date'];
-        $check_out_date = $_POST['check_out_date'];
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $check_in_date = $_POST['check_in_date'];
+    $check_out_date = $_POST['check_out_date'];
+    $adults = $_POST['adults'];
+    $children = $_POST['children'];
+    $room_type = $_POST['room_type'];
+    $use_points = isset($_POST['use_points']) ? 1 : 0;
 
-        // Database connection
-        $servername = "localhost";
-        $username = "your_db_username";
-        $password = "your_db_password";
-        $dbname = "your_db_name";
+    include 'scripts/DB_conect.php';
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check if the room type is available
+    $sql = "SELECT COUNT(*) as count FROM hotel_bookings WHERE type = ? AND cleaned = 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $room_type);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Check if the room type is available
-        $sql = "SELECT COUNT(*) as count FROM hotel_bookings WHERE type = ? AND cleaned = 1";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $room_type);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-
-        if ($row['count'] > 0) {
-            // Redirect to checkout.php
-            header("Location: checkout.php?room_type=$room_type&check_in_date=$check_in_date&check_out_date=$check_out_date");
-            exit();
-        } else {
-            echo "<script>Swal.fire('Sorry', 'The selected room type is not available. Please choose another type.', 'error');</script>";
-        }
-
-        $stmt->close();
-        $conn->close();
+    if ($row['count'] > 0) {
+      // Redirect to checkout.php
+      header("Location: checkout.php?room_type=$room_type&check_in_date=$check_in_date&check_out_date=$check_out_date");
+      exit();
+    } else {
+      echo "<script>Swal.fire('Sorry', 'The selected room type is not available. Please choose another type.', 'error');</script>";
     }
-    ?>
+
+    $stmt->close();
+    $conn->close();
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,43 +64,43 @@
         </p>
       </div>
 
-      <form class="space-y-6" id="bookingForm">
+      <form class="space-y-6" id="bookingForm" action="book.php" method="POST">
         <div class="grid grid-cols-2 gap-6">
           <!-- First Name & Last Name -->
           <div>
             <label class="block text-gray-700 mb-2" for="firstName">First Name</label>
-            <input type="text" id="firstName" class="w-full p-2 border rounded-lg" required>
+            <input type="text" id="firstName" name="first_name" class="w-full p-2 border rounded-lg" required>
           </div>
           <div>
             <label class="block text-gray-700 mb-2" for="lastName">Last Name</label>
-            <input type="text" id="lastName" class="w-full p-2 border rounded-lg" required>
+            <input type="text" id="lastName" name="last_name" class="w-full p-2 border rounded-lg" required>
           </div>
           
           <!-- Check in & Check out dates -->
           <div>
             <label class="block text-gray-700 mb-2" for="checkIn">Check in date</label>
-            <input type="date" id="checkIn" class="w-full p-2 border rounded-lg" required>
+            <input type="date" id="checkIn" name="check_in_date" class="w-full p-2 border rounded-lg" required>
           </div>
           <div>
             <label class="block text-gray-700 mb-2" for="checkOut">Check out date</label>
-            <input type="date" id="checkOut" class="w-full p-2 border rounded-lg" required>
+            <input type="date" id="checkOut" name="check_out_date" class="w-full p-2 border rounded-lg" required>
           </div>
           
           <!-- Number of guests & children -->
           <div>
             <label class="block text-gray-700 mb-2" for="adults">Number of Adults</label>
-            <input type="number" id="adults" min="1" value="1" class="w-full p-2 border rounded-lg" required>
+            <input type="number" id="adults" name="adults" min="1" value="1" class="w-full p-2 border rounded-lg" required>
           </div>
           <div>
             <label class="block text-gray-700 mb-2" for="children">Number of Children</label>
-            <input type="number" id="children" min="0" value="0" class="w-full p-2 border rounded-lg" required>
+            <input type="number" id="children" name="children" min="0" value="0" class="w-full p-2 border rounded-lg" required>
           </div>
         </div>
         
         <!-- Room Type -->
         <div>
           <label class="block text-gray-700 mb-2" for="roomType">Room Type</label>
-          <select id="roomType" class="w-full p-2 border rounded-lg" required>
+          <select id="roomType" name="room_type" class="w-full p-2 border rounded-lg" required>
             <option value="">Select a room type</option>
             <option value="standard">Single Room</option>
             <option value="deluxe">Double Room</option>
@@ -117,7 +111,7 @@
 
         <!-- Points Redemption -->
         <div class="flex items-center space-x-2 bg-green-50 p-4 rounded-lg">
-          <input type="checkbox" id="usePoints" class="w-4 h-4 text-blue-600">
+          <input type="checkbox" id="usePoints" name="use_points" class="w-4 h-4 text-blue-600">
           <label for="usePoints" class="text-gray-700">
             Use available points for discount (1000 points = £1 off)
           </label>
@@ -175,12 +169,6 @@
         const pointsRedeemed = usePointsCheckbox.checked ? pointsToRedeemInput.value : 0;
         const discount = pointsRedeemed / 100; // £1 per 100 points
         
-        Swal.fire({
-          title: 'Booking Successful!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#2563eb'
-        });
       });
     </script>
     </div>
