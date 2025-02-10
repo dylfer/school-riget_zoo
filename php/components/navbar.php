@@ -4,34 +4,34 @@
 
 <div class="flex w-full justify-between items-center p-4">
   <div class="flex items-center">
-    <img src="https://via.placeholder.com/50" alt="Logo" class="rounded-full" />
+    <img src="../php/images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png" alt="Logo" class="rounded-full w-14 h-14" />
   </div>
   <div class="flex space-x-4">
-    <a href="/home" class="hover:text-gray-400 bg-gray-200 p-2 rounded">Home</a>
-    <a href="/zoo-tickets" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
+    <a href="index.php" class="hover:text-gray-400 bg-gray-200 p-2 rounded">Home</a>
+    <a href="tickets.php" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
       >Zoo Tickets</a
     >
-    <a href="/hotel" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
+    <a href="hotel.php" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
       >Hotel</a
     >
-    <a href="/about-us" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
+    <a href="about.php" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
       >About us</a
     >
-    <a href="/contact-us" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
+    <a href="contact.php" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
       >Contact us</a
     >
-    <a href="/educational" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
+    <a href="educational.php" class="hover:text-gray-400 bg-gray-200 p-2 rounded"
       >Educational</a
     >
   </div>
   <div class="flex space-x-4 justify-between items-center">
     <a
-      href="/login"
+      href="login.php"
       class="hover:text-white bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
       >Login</a
     >
     <a
-      href="/signup"
+      href="signup.php"
       class="hover:text-white bg-green-500 text-white p-2 rounded hover:bg-green-600"
       >Signup</a
     >
