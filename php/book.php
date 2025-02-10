@@ -51,11 +51,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
-  <body class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed flex items-center justify-center">
+  <body class="min-h-screen bg-[url('book-bg.png')] bg-no-repeat bg-cover bg-fixed">
+    <div class="min-h-screen flex items-center justify-center">
     <section class="bg-white/60 rounded-lg p-8 max-w-2xl shadow-lg relative w-full mx-4">
       <!-- Logo -->
       <div class="absolute top-8 right-8">
-        <img src="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png" 
+        <img src="images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png" 
              alt="Logo" 
              class="w-16 h-16 object-contain">
       </div>
@@ -172,7 +173,7 @@
         const formData = new FormData(form);
         const pointsEarned = pointsDisplay.textContent;
         const pointsRedeemed = usePointsCheckbox.checked ? pointsToRedeemInput.value : 0;
-        const discount = pointsRedeemed / 100; // $1 per 100 points
+        const discount = pointsRedeemed / 100; // £1 per 100 points
         
         Swal.fire({
           title: 'Booking Successful!',
@@ -182,6 +183,7 @@
         });
       });
     </script>
+    </div>
   </body>
 <?php
     include 'components/footer.php';
