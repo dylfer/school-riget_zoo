@@ -30,12 +30,20 @@ function login() {
       errorBox.classList.remove("hidden");
     }
   };
-
-  const data = JSON.stringify({
-    username: username,
-    email: email,
-    password: password,
-  });
-
+  let data;
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user)) {
+    data = JSON.stringify({
+      email: user,
+      password: password,
+    });
+  } else {
+    data = JSON.stringify({
+      username: user,
+      password: password,
+    });
+  }
   xhr.send(data);
 }
+window.onload = function () {
+  document.getElementById("login").addEventListener("click", login);
+};

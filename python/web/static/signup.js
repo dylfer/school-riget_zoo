@@ -51,8 +51,8 @@ function signup() {
     password: password,
     TandC: TandC,
     // TODO add imputs for name values
-    first_name: "",
-    last_name: "",
+    first_name: "temp",
+    last_name: "temp",
     mfa: mfa,
   });
 
