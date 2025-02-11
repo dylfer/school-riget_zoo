@@ -120,13 +120,12 @@ class DataBace:
     def insert(self, table: str, values: tuple, columns: list):
         columns = str(columns).replace(
             "'", '').replace("[", "").replace("]", "")
-        sql = f"INSERT INTO {table} {columns} VALUES ("
+        sql = f"INSERT INTO {table} ({columns}) VALUES ("
         for i in range(len(columns.split(","))):
             if i == len(columns.split(",")) - 1:
                 sql += "%s)"
             else:
                 sql += "%s,"
-        print(sql)
         self.cursor.execute(sql, values)
         self.mydb.commit()
 

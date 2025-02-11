@@ -70,7 +70,7 @@ def Define(DB):
         token = jwt.encode({"id":id,"username": username, "session_id": str(session_id)}, token_secret, algorithm="HS256")
         response.set_cookie("token", token, httponly=True)
         response.set_cookie("auth", True)
-        DB.insert("users",(id,username,email,Phash(password),token_secret,mfa,first_name,last_name),("id","username","email","password","token_secret","mfa_enabled","first_name","last_name"))
+        DB.insert("users",(id,username,email,Phash(password),token_secret,mfa,first_name,last_name),["id","username","email","password","token_secret","mfa_enabled","first_name","last_name"])
         # TODO update session DB
         # TODO set all login session and other items
         return response, 201
