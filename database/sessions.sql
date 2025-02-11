@@ -2,7 +2,7 @@ CREATE TABLE `sessions` (
   `session_id` VARCHAR(36) NOT NULL,
   `previous_session_id` VARCHAR(36) DEFAULT NULL,
   `user_id` VARCHAR(36),
-  `login_status` BOOLEAN DEFAULT FALSE,
+  `login_status` BOOLEAN DEFAULT FALSE NOT NULL,
   `token` VARCHAR(255) DEFAULT NULL,
   `last_updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
   `save_data` TEXT,
