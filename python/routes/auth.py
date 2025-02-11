@@ -24,19 +24,19 @@ def Define(DB):
         password = data.get("password")
         if not username:
             email = data.get("email")
-            res = DB.select("users","id,password, username, mfa_enabled",f"email = '{email}'")
+            res = DB.select("users","id,password, username, mfa_enabled,token_secret",f"email = '{email}'")
             if not res:
                 return jsonify({"error": "User not found"}), 404
         else:
-            res = DB.select("users","id,password, username, mfa_enabled",f"username = '{username}'")
+            res = DB.select("users","id,password, username, mfa_enabled,token_secret",f"username = '{username}'")
             if not res:
                 return jsonify({"error": "User not found"}), 404
-        if Phash(password) == res[0]["password"]:
-            response = jsonify({"message": "Login successful", "mfa": res[0].mfa})
-            if not res[0].mfa:
-                token = jwt.encode({"username": res[0]["username"], "session_id": session_id}, os.getenv('SECRET_KEY'), algorithm="HS256")
+        if Phash(password) == res[0][1]:
+            response = jsonify({"message": "Login successful", "mfa": res[0][3]})
+            if not res[0][3]:
+                token = jwt.encode({"username": res[0][2], "session_id": session_id}, res[0][4], algorithm="HS256")
                 response.set_cookie("token", token, httponly=True) 
-
+                response.set_cookie("auth", "true")
             return response, 200
         return jsonify({"error": "Invalid password"}), 401
 
@@ -69,8 +69,34 @@ def Define(DB):
         response = jsonify({"message": "User created"})
         token = jwt.encode({"id":id,"username": username, "session_id": str(session_id)}, token_secret, algorithm="HS256")
         response.set_cookie("token", token, httponly=True)
+        response.set_cookie("auth", True)
         DB.insert("users",(id,username,email,Phash(password),token_secret,mfa,first_name,last_name),("id","username","email","password","token_secret","mfa_enabled","first_name","last_name"))
         # TODO update session DB
         # TODO set all login session and other items
         return response, 201
+    
+
+    @auth_router.route("/mfa", methods=["POST"])
+    def mfa():
+        # data = request.json
+        # session_id = request.cookies.get("session_id")
+        # code = data.get("code")
+        # res = DB.select("users","mfa_enabled,token_secret",f"id = '{session_id}'")
+        # if not res:
+        #     return jsonify({"error": "User not found"}), 404
+        # if not res[0][0]:
+        #     return jsonify({"error": "MFA not enabled"}), 400
+        # if not code:
+        #     return jsonify({"error": "Missing code"}), 400
+        # # TODO add mfa code check
+        # return jsonify({"message": "MFA successful"}), 200
+        pass
+
+    @auth_router.route("/logout", methods=["POST"])
+    def logout():
+        # set on session DB also validate token and session_id
+        response = jsonify({"message": "Logged out"})
+        response.set_cookie("token", "", expires=0)
+        response.set_cookie("auth", "", expires=0)
+        return response, 200
     return auth_router

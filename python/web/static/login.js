@@ -44,6 +44,6 @@ function login() {
   }
   xhr.send(data);
 }
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("login").addEventListener("click", login);
-};
+});
