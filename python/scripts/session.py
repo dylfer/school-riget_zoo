@@ -25,17 +25,17 @@ def get(DB, session_id):
     return res[0]
 
 def set_auth(DB, session_id, token, user_id):
-    DB.update("sessions", f"token = '{token}', login_status = '1', user_id = '{user_id}'", f"session_id = '{session_id}'", "login_status = 1")
+    DB.update("sessions", f"token = '{token}', login_status = '1', user_id = '{user_id}'", f"session_id = '{session_id}'")
     return True
 
 def check_auth(DB, session_id, token):#TODO
     res = DB.select("sessions", "token, login_status, user_id", f"session_id = '{session_id}'")
     if not res or res[0][0] != token  or not res[0][1]:
-        return False
+        return False, None
     res1 = DB.select("users", "token_secret", f"id = '{res[0][2]}'")
     if not res1:
-        return False
-    return True,res[1][0]
+        return False, None
+    return True, res1[0][0]
 
 
 

@@ -36,9 +36,18 @@ def register_routes(app, DB):
             if request.path in ['/dashboard', "/orders", "/settings", "/bookings"]:
                 token = request.cookies.get('token')
                 if not token:
-                    return jsonify({'message': 'Missing token'}), 401
-                token_secret = check_auth(DB, session_id, token)
-                
+                    response = jsonify({'message': 'Missing token'})
+                    response.headers['Location'] = '/login'
+                    response.status_code = 302
+                    return response
+                res,token_secret = check_auth(DB, session_id, token)
+                if not res:
+                    response = jsonify({'message': 'Invalid authentication'})
+                    response.delete_cookie('token')
+                    response.delete_cookie('auth')
+                    response.headers['Location'] = '/login'
+                    response.status_code = 302
+                    return response
                 try: 
                     jwt.decode(token, token_secret, algorithms=['HS256'])
                 except jwt.ExpiredSignatureError:

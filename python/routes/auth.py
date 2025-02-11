@@ -5,6 +5,7 @@ import datetime
 import os
 import re
 import uuid
+from scripts.session import set_auth
 
 
 
@@ -35,6 +36,7 @@ def Define(DB):
             response = jsonify({"message": "Login successful", "mfa": res[0][3]})
             if not res[0][3]:
                 token = jwt.encode({"username": res[0][2], "session_id": session_id}, res[0][4], algorithm="HS256")
+                set_auth(DB, session_id, token, res[0][0])
                 response.set_cookie("token", token, httponly=True) 
                 response.set_cookie("auth", "true")
             return response, 200
@@ -61,16 +63,16 @@ def Define(DB):
         if not re.match(email_regex, email):
             return jsonify({"error": "Invalid email address"}), 400
         res = DB.select("users","username",f"username = '{username}' OR email = '{email}'")
-        print(res)
         if res:
             return jsonify({"error": "User already exists"}), 409
         id = str(uuid.uuid4())
         token_secret = str(uuid.uuid4())
+        DB.insert("users",(id,username,email,Phash(password),token_secret,mfa,first_name,last_name),["id","username","email","password","token_secret","mfa_enabled","first_name","last_name"])
         response = jsonify({"message": "User created"})
         token = jwt.encode({"id":id,"username": username, "session_id": str(session_id)}, token_secret, algorithm="HS256")
+        set_auth(DB, session_id, token, id)
         response.set_cookie("token", token, httponly=True)
-        response.set_cookie("auth", True)
-        DB.insert("users",(id,username,email,Phash(password),token_secret,mfa,first_name,last_name),["id","username","email","password","token_secret","mfa_enabled","first_name","last_name"])
+        response.set_cookie("auth", "true")
         # TODO update session DB
         # TODO set all login session and other items
         return response, 201
