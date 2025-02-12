@@ -1,3 +1,7 @@
+<?php
+  include 'components/navbar.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +20,7 @@
     <div class="bg-white shadow-md rounded-lg mx-4 my-8 md:mx-8 md:my-12">
       <div
         class="px-6 py-8 md:px-12 md:py-12 bg-cover bg-center h-[75dvh] flex flex-col justify-between"
-        style="background-image: url('Homepage.jpg')"
+        style="background-image: url('images/Homepage.jpg')"
       >
         <div class="text-center">
           <h1 class="text-3xl font-bold text-teal-500 mb-4">
@@ -28,7 +32,7 @@
         </div>
         <div class="text-center">
           <a
-            href="tickets.html"
+            href="tickets.php"
             class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-full inline-block"
             >Buy Tickets now</a
           >
@@ -43,7 +47,7 @@
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <a
-          href="about.html"
+          href="about.php"
           class="bg-white hover:bg-gray-200 text-teal-500 font-bold py-3 px-6 rounded-full inline-block"
           >Find out more</a
         >
@@ -160,4 +164,8 @@
       </div>
     </div>
   </body>
+  <?php
+    include 'components/footer.php';
+  ?>
+
 </html>

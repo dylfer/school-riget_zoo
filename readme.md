@@ -28,7 +28,7 @@ Python TODO will be complete by Dylan Ferrow
 
 ### python TODO 
  - [x] move/convert files for js usage 
- - [ ] update all html for python usage
+ - [x] update all html for python usage
  - [ ] complete routes 
  - [ ] complete DB usage
  - [ ] complete js

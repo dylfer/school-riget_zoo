@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -89,4 +92,7 @@
         </div>
     </main>
 </body>
+<?php
+    include 'components/footer.php';
+?>
 </html>

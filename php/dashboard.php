@@ -1,3 +1,6 @@
+<?php
+    include 'components/navbar.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body class="bg-white min-h-screen">
+  <div class="min-h-screen">
   <div class="container mx-auto my-auto px-4 py-8">
     <div class="bg-gradient-to-br from-gray-50 to-gray-200 p-2 sm:p-12 rounded-lg ">
       <h1 class="text-3xl font-bold text-gray-800 mb-8">Dashboard</h1>
@@ -17,7 +21,7 @@
           <div class="p-6 bg-blue-50">
             <div class="flex justify-between items-center">
               <h2 class="text-2xl font-bold text-gray-800">Welcome, User</h2>
-              <a href="settings.html"><button class="text-gray-600 hover:text-gray-800 transition">
+              <a href="settings.php"><button class="text-gray-600 hover:text-gray-800 transition">
                 <i class="fas fa-cog text-xl"></i>
               </button></a>
             </div>
@@ -84,5 +88,9 @@
       </div>
     </div>
   </div>
+</div>
 </body>
+<?php
+    include 'components/footer.php';
+?>
 </html>

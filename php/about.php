@@ -1,10 +1,14 @@
+<?php
+    include 'components/navbar.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"/>
+    <link rel="icon" href="images/Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"/>
     <title>About Page</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,35 +21,35 @@
                 <p class="text-gray-700 mb-4">Welcome to Riget's Zoo, where conservation meets education. Our diverse collection of animals represents species from every continent, each contributing to our mission of wildlife preservation and public education.</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Lion.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Lion.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Lions</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Elephant.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Elephant.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Elephants</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Penguin.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Penguin.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Penguins</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Giraffe.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Giraffe.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Giraffes</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Tiger.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Tiger.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Tigers</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Monkey.png')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Monkey.png')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Monkeys</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Bear.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Bear.jpg')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Bears</p>
                     </div>
                     <div class="bg-white rounded-lg p-4 shadow-md">
-                        <div class="h-32 bg-[url('Panda.png')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
+                        <div class="h-32 bg-[url('images/Panda.png')] bg-cover bg-center bg-no-repeat rounded-lg mb-2"></div>
                         <p class="text-sm text-center">Pandas</p>
                     </div>
                 </div>
@@ -79,4 +83,8 @@
         </section>
     </main>
 </body>
+<?php
+    include 'components/footer.php';
+?>
+
 </html>

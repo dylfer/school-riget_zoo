@@ -14,8 +14,8 @@ load_dotenv()
 app = Flask(__name__, static_url_path='',
             static_folder='web/static', template_folder='web/templates')
 
-DB = DataBace(database="zoo", type="mysql", host="localhost",
-              port="3306", user="zoo", password=os.getenv("DB_PASSWORD"))
+DB = DataBace(database=os.getenv("DB"), type="mysql", host="localhost",
+              port="3306", user=os.getenv("DB_USER"), password=os.getenv("DB_PASSWORD"))
 
 # print(DB.setup(["database/hotel_bookings.sql", "database/hotel_rooms.sql", "database/purchases.sql",
 #          "database/sessions.sql", "database/users.sql", "database/zoo_bookings.sql"]))
