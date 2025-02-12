@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
   if (empty($errors)) {
       // Email setup
-      $to = "Admin@Rigetszoo.com"; // Replace with your email
+      $to = "Admin@Rigetszoo.com";
       $subject = "New Contact Form Submission";
       $email_message = "Name: $name\n";
       $email_message .= "Contact: $contact\n\n";

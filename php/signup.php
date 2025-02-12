@@ -79,6 +79,7 @@ $conn->close();
         <form action="">
           <h1 class="text-2xl text-center">Sign Up</h1>
           <div>
+            <!-- Logo -->
             <img
               src="Black_and_White_Simple_Modern_Minimalist_Animals_Zoo_Station_Circle_Logo-removebg-preview.png"
               alt="Logo"
@@ -88,6 +89,7 @@ $conn->close();
           <div
             class="input-box relative w-full h-12 bg-white my-6 mt-5 rounded-full"
           >
+          <!-- Username -->
             <input
               type="text"
               placeholder=" "
@@ -105,6 +107,7 @@ $conn->close();
           <div
             class="input-box relative w-full h-12 bg-white my-6 mt-5 rounded-full"
           >
+          <!-- User Email -->
             <input
               type="Email"
               name="email"
@@ -122,6 +125,7 @@ $conn->close();
           <div
             class="input-box relative w-full h-12 bg-white my-6 mt-5 rounded-full"
           >
+          <!-- User Password -->
             <input
               type="password"
               placeholder=" "
@@ -139,6 +143,7 @@ $conn->close();
           <div
             class="input-box relative w-full h-12 bg-white my-6 mt-5 rounded-full"
           >
+          <!-- Password Confirmation -->
             <input
               type="password"
               placeholder=" "
@@ -165,9 +170,11 @@ $conn->close();
             type="submit"
             class="btn w-full h-11 bg-white border-none outline-none rounded-full shadow-md cursor-pointer text-base text-black font-semibold mt-5 mb-4"
           >
+          <!-- Sign Up Button -->
             Sign Up
           </button>
           <div class="text-sm text-center my-5">
+            <!-- Link to Login Page -->
             <p>
               Alredy have an account?
               <a
