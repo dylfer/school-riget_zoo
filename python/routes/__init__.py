@@ -33,7 +33,7 @@ def register_routes(app, DB):
                 response.headers['Location'] = '/login'
                 response.status_code = 302
                 return response
-            if request.path in ['/dashboard', "/orders", "/settings", "/bookings"]:
+            if request.path in ['/dashboard', "/tickets", "/settings", "/book"]:
                 token = request.cookies.get('token')
                 if not token:
                     response = jsonify({'message': 'Missing token'})
