@@ -39,6 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
       $_SESSION['error'] = implode("<br>", $errors);
   }
+    if (isset($error_message)) {
+    $_SESSION['error'] = $error_message;
+    header("Location: contact.php");
+    exit();
+}
 }
 ?>
   
