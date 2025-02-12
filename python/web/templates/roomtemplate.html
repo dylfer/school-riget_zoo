@@ -43,6 +43,8 @@
                 </p>
               </div>
               <button
+                id="room_book"
+                onclick="() => {}"
                 class="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition transform hover:scale-105"
               >
                 Book Now
@@ -53,5 +55,11 @@
       </div>
     </div>
     {% include 'footer.html' %}
+    <script>
+      const room_book = document.getElementById("room_book");
+      room_book.addEventListener("click", () => {
+        window.location.href = "/book?room={{ room_type }}";
+      });
+    </script>
   </body>
 </html>

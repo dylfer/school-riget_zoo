@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("nav-signup").classList.add("hidden");
     document.getElementById("nav-logout").classList.remove("hidden");
     document.getElementById("nav-user").classList.remove("hidden");
+    if (
+      window.location.pathname == "/login" ||
+      window.location.pathname == "/signup"
+    ) {
+      window.location.href = "/dashboard";
+    }
   }
   document.getElementById("nav-user").addEventListener("click", () => {
     window.location.href = "/dashboard";
