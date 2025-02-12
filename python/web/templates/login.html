@@ -16,7 +16,7 @@
 <script src="/login.js"></script>
 <div class="flex justify-center items-center h-dvh">
   <div class="w-96 bg-white bg-opacity-90 text-black rounded-lg p-8 mb-20">
-    <form action="">
+    <div action="">
       <h1 class="text-2xl text-center">Login</h1>
       <div>
         <img
@@ -45,6 +45,7 @@
       <div class="relative w-full h-12 my-8 rounded-full">
         <input
           type="text"
+          id="username"
           placeholder=" "
           name="username"
           required
@@ -60,6 +61,7 @@
       <div class="relative w-full h-12 my-8 rounded-full">
         <input
           type="password"
+          id="password"
           placeholder=" "
           name="password"
           required
@@ -82,7 +84,7 @@
         >
       </div>
       <button
-        type="submit"
+        id="login"
         class="w-full h-11 bg-white border-none rounded-full shadow-md cursor-pointer text-base font-semibold text-black my-5"
       >
         Login
@@ -95,6 +97,6 @@
           >
         </p>
       </div>
-    </form>
+    </div>
   </div>
 </div>

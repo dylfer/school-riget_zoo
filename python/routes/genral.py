@@ -28,7 +28,7 @@ def privacy():
 
 @genral_router.route('/education')
 def education():
-    return render_template('base.html', content_template='education.html', title='Education')
+    return render_template('base.html', content_template='educational.html', title='Education')
 
 @genral_router.route('/dashboard')
 def dashboard():
