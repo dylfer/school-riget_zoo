@@ -1,6 +1,5 @@
 CREATE TABLE purchases (
     `purchase_id` INT(11),
-    `payment_id` VARCHAR(36),
     `user_id` VARCHAR(36) NOT NULL,
     `type` ENUM('hotel', 'zoo') NOT NULL,
     `room_booking_id` INT(11),
