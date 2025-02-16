@@ -15,5 +15,7 @@ async function initialize() {
     document.getElementById("success").classList.remove("hidden");
     document.getElementById("customer-email").textContent =
       session.customer_email;
+  } else {
+    document.getElementById("failure").classList.remove("hidden");
   }
 }

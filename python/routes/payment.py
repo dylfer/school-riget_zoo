@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify, redirect, request, Blueprint
 import stripe
 import json
+import hashlib
 
 stripe.api_key = os.getenv('STRIPE_KEY')
 
@@ -22,10 +23,16 @@ ticket = {
     "child" : "price_1QpdZV03GYTbO3NbH66TFJSn"
 }
 
+def sha256_hash(data):
+            return hashlib.sha256(data.encode()).hexdigest()
+
 
 @payment_router.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     basket = request.cookies.get("basket")
+    booking = request.cookies.get("booking")
+    signiture = request.cookies.get("signiture")
+    metaData = {"booking": booking, "basket": basket, "signiture": signiture}
     items = []
     if basket is not None:
         basket = json.loads(basket)
@@ -50,6 +57,7 @@ def create_checkout_session():
             submit_type='book',
             return_url=YOUR_DOMAIN +
             '/return?session_id={CHECKOUT_SESSION_ID}',
+            metadata=metaData
         )
     except Exception as e:
         return str(e)
@@ -60,6 +68,23 @@ def create_checkout_session():
 @payment_router.route('/session-status', methods=['GET'])
 def session_status():
     session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+    if session.payment_status == "complete":
+        basket = session.metadata.get("basket")
+        booking = session.metadata.get("booking")
+        signiture = session.metadata.get("signiture")
+        cookie_signiture = request.cookies.get("signiture")
+        # validate the data so it can't have been tampered with
+        if cookie_signiture != signiture:
+            return jsonify({"error": "Invalid cookie hash"}), 400
+        basket_hash = sha256_hash(basket)
+        booking_hash = sha256_hash(booking)
+        expected_signiture = sha256_hash(basket_hash + booking_hash)
+        if cookie_signiture != expected_signiture:
+            return jsonify({"error": "Invalid cookie hash"}), 400
+        # TODO caculate points and check against cookie points
+        # TODO add booking to bookings
+        # TODO add points to user
+        pass
     print(session)
 
     return jsonify(status=session.status, customer_email=session.customer_details.email)

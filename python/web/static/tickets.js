@@ -32,6 +32,10 @@ function decrementValue(id) {
   }
 }
 
+function price() {
+  // TODO when complete use to cacl points
+}
+
 function calculatePoints() {
   const adults = tickets.adults.value || 1;
   const children = tickets.adults.value || 0;
@@ -40,10 +44,7 @@ function calculatePoints() {
 }
 
 function updateBasket() {
-  const points = calculatePoints();
-  const date = document.getElementById("checkIn");
-  const applyPoints = document.getElementById("usePoints").checked;
-  const basket = [
+  window.basket = [
     { type: "ticket", ticket: "adult", amount: tickets.adults.value },
   ];
   if (tickets.children.value != 0) {
@@ -53,14 +54,38 @@ function updateBasket() {
       amount: tickets.children.value,
     });
   }
-  document.cookie = `basket=${JSON.stringify(basket)}; `;
+  document.cookie = `basket=${JSON.stringify(window.basket)}; `;
   window.location.href = "/checkout";
 }
 
-function updateBooking() {}
+function updateBooking() {
+  window.booking = {
+    date: document.getElementById("checkIn").value,
+    points: calculatePoints(),
+    applyPoints: document.getElementById("usePoints").checked,
+  };
+
+  document.cookie = `booking=${JSON.stringify(window.booking)}; `;
+}
+
+function hash() {
+  let basketHash = sha256(window.basket);
+  let bookingHash = sha256(window.booking);
+  document.cookie = `signiture=${sha256(basketHash + bookingHash)}; `;
+}
+
+function update() {
+  updateBasket();
+  updateBooking();
+  hash();
+}
+
+function avalibility() {
+  // check avalible dates and ticket amount
+}
 
 function accountPoints() {
   // get token and request if user has points then display the usepoints
 }
 
-document.getElementById("pay").addEventListener("click", updateBasket);
+document.getElementById("pay").addEventListener("click", update);
