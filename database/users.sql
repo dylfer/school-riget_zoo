@@ -3,6 +3,7 @@ CREATE TABLE `users`(
     `username`   VARCHAR(50) NOT NULL,
     `email`      VARCHAR(100) NOT NULL,
     `password`   VARCHAR(255) NOT NULL,
+    `points`     INT(30) NOT NULL DEFAULT 0,
     `educational` BOOLEAN NOT NULL DEFAULT FALSE,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `token_secret`      VARCHAR(255) NOT NULL,
