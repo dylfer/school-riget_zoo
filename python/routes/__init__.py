@@ -1,7 +1,7 @@
 from flask import request, jsonify, render_template, make_response
 from routes.auth import Define as Define_auth
 from routes.genral import genral_router
-from routes.payment import payment_router
+from routes.payment import Define as Define_payment
 from routes.book import Define as Define_book
 from routes.rooms import room_router
 from scripts.session import create, check, check_auth,clear
@@ -40,7 +40,7 @@ def register_routes(app, DB):
                     response.headers['Location'] = '/login'
                     response.status_code = 302
                     return response
-                res,token_secret = check_auth(DB, session_id, token)
+                res,token_secret,_ = check_auth(DB, session_id, token)
                 if not res:
                     response = jsonify({'message': 'Invalid authentication'})
                     response.delete_cookie('token')
@@ -76,6 +76,6 @@ def register_routes(app, DB):
 
     app.register_blueprint(Define_auth(DB))
     app.register_blueprint(Define_book(DB))
-    app.register_blueprint(payment_router)
+    app.register_blueprint(Define_payment(DB))
     app.register_blueprint(genral_router)
     app.register_blueprint(room_router)
