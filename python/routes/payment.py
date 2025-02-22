@@ -4,7 +4,7 @@ import stripe
 import json
 import hashlib
 from scripts.session import check_auth
-
+import uuid
 
 
 
@@ -88,11 +88,12 @@ def Define(DB):
             points = session.amount_total * 2.38
             _,_,user_id = check_auth(DB, session_id, request.cookies.get("token"))
             DB.update("users",f"points={points}",f"id =  {user_id}")
-            if basket.get("type") == "room":
-                if basket[0]["type"] == "room":# TODO fillin the sql with corect data
-                    DB.insert("hotel_bookings", (basket[0]["room"], basket[0]["nights"], basket[0]["amount"], user_id), ["room", "nights", "amount", "user_id"])
-                else:
-                    DB.insert("zoo_bookings", (basket[0]["ticket"], 1, basket[0]["amount"], user_id), ["ticket", "nights", "amount", "user_id"])
+            booking_code = str(uuid.uuid4())
+            if basket[0]["type"] == "room":# TODO fillin the sql with corect data
+                # get room no to set as room. should be gotten at avalibilty check
+                DB.insert("hotel_bookings", (basket[0]["room"], basket[0]["nights"],"completed",booking_code, user_id), ["type", "nights", "status","booking_code", "user_id"])#TODO add beds adults children checkin check out
+            else:
+                DB.insert("zoo_bookings", (basket[0]["ticket"], 1, basket[0]["amount"], user_id), ["ticket", "nights", "amount", "user_id"])
             # TODO email booking to user 
             # TODO insert into payments table
             # TODO update checkout sesion so this requesct cant dupe the booking 
